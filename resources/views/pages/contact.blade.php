@@ -1,3 +1,4 @@
+<!--
 <!DOCTYPE HTML>
 <html>
     <head>
@@ -7,3 +8,9 @@
         <h1>contact me!</h1>
     </body>
 </html>
+-->
+
+@extends('layout')
+@section('content')
+    <h1>contact me!</h1>
+@endsection
