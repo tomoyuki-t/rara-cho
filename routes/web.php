@@ -14,3 +14,4 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', 'App\Http\Controllers\WelcomeController@index');
+Route::get('contact', 'App\Http\Controllers\WelcomeController@contact');
