@@ -2,8 +2,9 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
+//use Illuminate\Http\Request;
 use App\Models\Article;
+use App\Http\Requests\ArticleRequest;
 
 class ArticlesController extends Controller
 {
@@ -21,16 +22,17 @@ class ArticlesController extends Controller
         return view('articles.create');
     }
 
-    public function store(Request $request){
+    public function store(ArticleRequest $request){
         //$inputs = \Request::all();
         //dd($inputs); formの入力内容を表示して終了、DBには影響しない
-        $rules = [
-            'title' => 'required|min:3',
-            'body' => 'required',
-            'published_at' => 'required|date'
-        ];
-        $validated = $this->validate($request, $rules);
-        Article::create($validated);
+        
+        //$rules = [
+        //    'title' => 'required|min:3',
+        //    'body' => 'required',
+        //    'published_at' => 'required|date'
+        //];
+        //$validated = $this->validate($request, $rules);
+        Article::create($request->validated());
         return redirect('articles');
     }
 }
