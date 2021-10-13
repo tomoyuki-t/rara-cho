@@ -19,4 +19,6 @@ Route::get('contact', 'App\Http\Controllers\PagesController@contact');
 Route::get('about', 'App\Http\Controllers\PagesController@about');
 
 Route::get('articles', 'App\Http\Controllers\ArticlesController@index');
+Route::get('articles/create', 'App\Http\Controllers\ArticlesController@create');
 Route::get('articles/{id}', 'App\Http\Controllers\ArticlesController@show');
+Route::post('articles', 'App\Http\Controllers\ArticlesController@store');
