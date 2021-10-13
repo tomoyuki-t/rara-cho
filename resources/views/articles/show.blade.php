@@ -6,4 +6,9 @@
     <article>
         <div class="body">{{$article->body}}</div>
     </article>
+    <br/>
+    <div>
+        <a href="{{action('App\Http\Controllers\ArticlesController@edit', [$article->id])}}" class="btn btn-primary">編集</a>
+        <a href="{{action('App\Http\Controllers\ArticlesController@index')}}" class="btn btn-secondary float-right">一覧へ戻る</a>
+    </div>
 @endsection

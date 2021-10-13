@@ -22,3 +22,5 @@ Route::get('articles', 'App\Http\Controllers\ArticlesController@index');
 Route::get('articles/create', 'App\Http\Controllers\ArticlesController@create');
 Route::get('articles/{id}', 'App\Http\Controllers\ArticlesController@show');
 Route::post('articles', 'App\Http\Controllers\ArticlesController@store');
+Route::get('articles/{id}/edit', 'App\Http\Controllers\ArticlesController@edit');
+Route::patch('articles/{id}', 'App\Http\Controllers\ArticlesController@update');
