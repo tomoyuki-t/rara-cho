@@ -49,4 +49,10 @@ class ArticlesController extends Controller
         $article->update($request->validated());
         return redirect(url('articles', [$article->id]));
     }
+
+    public function destroy($id){
+        $article = Article::findOrFail($id);
+        $article->delete();
+        return redirect('articles');
+    }
 }
