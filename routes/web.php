@@ -14,14 +14,17 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', 'App\Http\Controllers\WelcomeController@index')->name('home');
-Route::get('contact', 'App\Http\Controllers\PagesController@contact')->name('contact');
-Route::get('about', 'App\Http\Controllers\PagesController@about')->name('about');
+Route::resource('articles', 'App\Http\Controllers\ArticlesController');
 
-Route::get('articles', 'App\Http\Controllers\ArticlesController@index')->name('articles.index');
-Route::get('articles/create', 'App\Http\Controllers\ArticlesController@create')->name('articles.create');
-Route::get('articles/{id}', 'App\Http\Controllers\ArticlesController@show')->name('articles.show');
-Route::post('articles', 'App\Http\Controllers\ArticlesController@store')->name('articles.store');
-Route::get('articles/{id}/edit', 'App\Http\Controllers\ArticlesController@edit')->name('articles.edit');
-Route::patch('articles/{id}', 'App\Http\Controllers\ArticlesController@update')->name('articles.update');
-Route::delete('articles/{id}', 'App\Http\Controllers\ArticlesController@destroy')->name('articles.destroy');
+//Route::get('/', 'App\Http\Controllers\WelcomeController@index')->name('home');
+//Route::get('contact', 'App\Http\Controllers\PagesController@contact')->name('contact');
+//Route::get('about', 'App\Http\Controllers\PagesController@about')->name('about');
+
+//Route::get('articles', 'App\Http\Controllers\ArticlesController@index')->name('articles.index');
+//Route::get('articles/create', 'App\Http\Controllers\ArticlesController@create')->name('articles.create');
+//Route::get('articles/{id}', 'App\Http\Controllers\ArticlesController@show')->name('articles.show');
+//Route::post('articles', 'App\Http\Controllers\ArticlesController@store')->name('articles.store');
+//Route::get('articles/{id}/edit', 'App\Http\Controllers\ArticlesController@edit')->name('articles.edit');
+//Route::patch('articles/{id}', 'App\Http\Controllers\ArticlesController@update')->name('articles.update');
+//Route::delete('articles/{id}', 'App\Http\Controllers\ArticlesController@destroy')->name('articles.destroy');
+
