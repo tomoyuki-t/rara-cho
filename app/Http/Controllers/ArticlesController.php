@@ -36,7 +36,7 @@ class ArticlesController extends Controller
         //];
         //$validated = $this->validate($request, $rules);
         Article::create($request->validated());
-        return redirect('articles')->with('message', '記事を登録しました');;
+        return redirect()->route('articles.index')->with('message', '記事を追加しました');;
     }
 
     public function edit($id){
@@ -47,12 +47,12 @@ class ArticlesController extends Controller
     public function update(ArticleRequest $request, $id){
         $article = Article::findOrFail($id);
         $article->update($request->validated());
-        return redirect(url('articles', [$article->id]))->with('message', '記事を編集しました');;
+        return redirect()->route('articles.show', [$article->id])->with('message', '記事を更新しました');;
     }
 
     public function destroy($id){
         $article = Article::findOrFail($id);
         $article->delete();
-        return redirect('articles')->with('message', '記事を削除しました');
+        return redirect()->route('articles.index')->with('message', '記事を削除しました');
     }
 }

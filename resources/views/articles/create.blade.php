@@ -3,7 +3,14 @@
 @section('content')
     <h1>Write a new Article</h1>
     <hr/>
-    
+
+    @include('errors.form_errors')
+
+    {!! Form::open(['route' => 'articles.store']) !!}
+        @include('articles.form', ['published_at' => date('Y-m-d'), 'submitButton' => 'Add Article'])
+    {!! Form::close() !!}
+
+    {{--
     @if($errors->any())
         <div class="alert alert-danger">
             <ul>
@@ -31,4 +38,6 @@
             {!! Form::submit('Add Article', ['class' => 'btn btn-primary form-control']) !!}
         </div>
     {!! Form::close() !!}
+    --}}
+    
 @endsection
