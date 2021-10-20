@@ -14,6 +14,10 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
+Route::get('about', 'App\Http\Controllers\PagesController@about')->name('about');
+Route::get('contact', 'App\Http\Controllers\PagesController@contact')->name('contact');
+
+Route::get('/', 'App\Http\Controllers\ArticlesController@index')->name('home');
 Route::resource('articles', 'App\Http\Controllers\ArticlesController');
 
 //Route::get('/', 'App\Http\Controllers\WelcomeController@index')->name('home');

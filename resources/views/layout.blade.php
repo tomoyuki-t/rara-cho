@@ -7,11 +7,13 @@
         <script src="/js/app.js" defer></script>
     </head>
     <body>
-        <div class="container py-4">
-            @if(session('message'))
+        @include('navbar')
+
+        <div class="container">
+            @if(Session::has('flash_message'))
                 <div class="alert alert-success">{{ session('message') }}</div>
             @endif
-            
+
             @yield('content')
         </div>
     </body>
