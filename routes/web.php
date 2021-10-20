@@ -32,3 +32,8 @@ Route::resource('articles', 'App\Http\Controllers\ArticlesController');
 //Route::patch('articles/{id}', 'App\Http\Controllers\ArticlesController@update')->name('articles.update');
 //Route::delete('articles/{id}', 'App\Http\Controllers\ArticlesController@destroy')->name('articles.destroy');
 
+
+Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
+    //return redirect()->route('articles.index');
+    return view('dashboard');
+})->name('dashboard');
