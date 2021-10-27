@@ -8,10 +8,11 @@
     </article>
     <br/>
     <div>
-        <a href="{{action('App\Http\Controllers\ArticlesController@edit', [$article->id])}}" class="btn btn-primary">編集</a>
-        {!! delete_form(['articles', $article->id]) !!}
-        <a href="{{action('App\Http\Controllers\ArticlesController@index')}}" class="btn btn-secondary float-right">一覧へ戻る</a>
-        
+        @auth
+            <a href="{{action('App\Http\Controllers\ArticlesController@edit', [$article->id])}}" class="btn btn-primary">編集</a>
+            {!! delete_form(['articles', $article->id]) !!}
+            <a href="{{ route('articles.index') }}" class="btn btn-secondary float-right">一覧へ戻る</a>
+        @endauth        
     </div>
     
 @endsection

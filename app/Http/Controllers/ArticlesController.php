@@ -9,6 +9,10 @@ use Carbon\Carbon;
 
 class ArticlesController extends Controller
 {
+    public function __construct(){
+        $this->middleware('auth')->except(['index', 'show']);
+    }
+    
     public function index(){
         //$articles = Article::all();
         //$articles = Article::orderBy('published_at', 'desc')->latest('created_at', 'desc')->get();
