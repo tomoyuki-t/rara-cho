@@ -6,13 +6,14 @@ namespace App\Http\Controllers;
 use App\Models\Article;
 use App\Http\Requests\ArticleRequest;
 use Carbon\Carbon;
+use Illuminate\Support\Facades\Auth;
 
 class ArticlesController extends Controller
 {
     public function __construct(){
         $this->middleware('auth')->except(['index', 'show']);
     }
-    
+
     public function index(){
         //$articles = Article::all();
         //$articles = Article::orderBy('published_at', 'desc')->latest('created_at', 'desc')->get();
@@ -39,7 +40,8 @@ class ArticlesController extends Controller
         //    'published_at' => 'required|date'
         //];
         //$validated = $this->validate($request, $rules);
-        Article::create($request->validated());
+        //Article::create($request->validated());
+        Auth::user()->articles()->create($request->validated());
         return redirect()->route('articles.index')->with('message', '記事を追加しました');;
     }
 

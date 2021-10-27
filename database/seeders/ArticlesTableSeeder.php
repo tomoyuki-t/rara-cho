@@ -8,6 +8,7 @@ use Illuminate\Support\Facades\DB;
 use Faker\Factory as Faker;
 use Carbon\Carbon;
 use App\Models\Article; //これがないと"Target Class not found"や"Article not found"になる
+use App\Models\User;
 
 class ArticlesTableSeeder extends Seeder
 {
@@ -20,7 +21,8 @@ class ArticlesTableSeeder extends Seeder
     {
         //Query Builder
         DB::table('articles')->delete();
-        Article::factory()->count(20)->create();
+        $user = User::first();
+        Article::factory()->count(20)->create(['user_id' => $user->id,]);
 
         //以下はFactoryを使わない方法
         //Fakerを使用してダミーデータの作成
