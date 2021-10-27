@@ -7,6 +7,7 @@ use App\Models\Article;
 use App\Http\Requests\ArticleRequest;
 use Carbon\Carbon;
 use Illuminate\Support\Facades\Auth;
+use App\Models\Tag;
 
 class ArticlesController extends Controller
 {
@@ -27,7 +28,8 @@ class ArticlesController extends Controller
     }
 
     public function create(){
-        return view('articles.create');
+        $tag_list = Tag::pluck('name', 'id');
+        return view('articles.create', compact('tag_list'));
     }
 
     public function store(ArticleRequest $request){
@@ -41,18 +43,21 @@ class ArticlesController extends Controller
         //];
         //$validated = $this->validate($request, $rules);
         //Article::create($request->validated());
-        Auth::user()->articles()->create($request->validated());
+        $article = Auth::user()->articles()->create($request->validated());
+        $article->tags()->attach($request->input('tags'));
         return redirect()->route('articles.index')->with('message', '記事を追加しました');;
     }
 
     public function edit(Article $articles){
         //$article = Article::findOrFail($id);
-        return view('articles.edit', compact('article'));
+        $tag_list = Tag::pluck('name', 'id');
+        return view('articles.edit', compact('article', 'tag_list'));
     }
 
     public function update(ArticleRequest $request, Article $article){
         //$article = Article::findOrFail($id);
         $article->update($request->validated());
+        $article->tags()->sync($request->input('tags'));
         return redirect()->route('articles.show', [$article->id])->with('message', '記事を更新しました');;
     }
 
